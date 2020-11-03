@@ -3,13 +3,36 @@
 {% load bootstrap %}
 {% load static %}
 {% block main %}
-    <span>Você já tem uma conta? <a href="{% url 'login' %}" class="btn btn-light">Entrar</a></span>
-    <form method="POST" enctype="multipart/form-data">
-        <legend>Dados</legend>
-        {% csrf_token %}
-        {{ form|bootstrap }}
-        <button type="submit" class="btn btn-success">Salvar</button>
-        <a href="{% url 'index' %}" class="btn btn-light">Voltar</a>
-    </form>
+    <div class="row">
+        <div class="col-8">
+            <img src="{% static 'images/amigo_pescador.png' %}" alt="Logo"
+                 style="height: 120px; margin-left: 20px; margin-bottom: 10px;
+                 padding-top: 5px; padding-bottom: 10px;">
+        </div>
+        <div class="col" style="padding-top: 50; padding-left: 30px;">
+            <span>Você já tem uma conta? <a href="{% url 'login' %}" class="btn btn-light">Entrar</a></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <form class="shadow p-3 mb-5 rounded" method="POST" enctype="multipart/form-data">
+                <fieldset>
+                    <legend>Dados</legend>
+                    {% csrf_token %}
+                    <div class="input-block">
+                        {{ form|bootstrap }}
+                    </div>
+
+                    <div class="row buttons">
+                        <a href="{% url 'index' %}" class="btn btn-light">Voltar</a>
+                        <button type="submit" class="btn btn-success">Salvar</button>
+                    </div>
+                </fieldset>
+
+            </form>
+        </div>
+    </div>
+
 {% endblock %}
 

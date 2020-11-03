@@ -2,11 +2,63 @@
 {% block title %}Amigo Pescador{% endblock %}
 {% load static %}
 {% block main %}
-    {% if user.is_authenticated %}
-        Olá, <a href="{% url 'conta' %}">{{ user.name | capfirst }}</a>
-        <a href="{% url 'logout' %}" class="badge badge-pill badge-dark">Sair</a>
-    {% endif %}
+    <div class="row">
+        <div class="col">
+            <img src="{% static 'images/amigo_pescador.png' %}" alt="Logo" style="height: 120px; margin-left: 20px;">
+        </div>
+        <div class="col"></div>
+        <div class="col" style="margin-top: 22px; font-weight: 400;">
+            {% if user.is_authenticated %}
+            {% if user.image %}
+                <img src="{{user.image.url}}" alt="Imagem de Perfil"
+                     style="height:50px; border-radius: 100%; padding: 5px 5px; margin: 5px 5px;">
+            {% endif %}
+                <span style="margin: 3px 1px 3px 3px;">Olá,</span>
+                <a href="{% url 'conta' %}" style="margin: 3px 3px 3px 0; padding: 3px 3px;">
+                     {{ user.name | capfirst }}
+                </a>
+                <a href="{% url 'logout' %}" class="badge badge-pill badge-dark"
+                   style="margin: 3px 3px;">
+                    Sair
+                </a>
+            {% endif %}
+        </div>
+    </div>
 
-    <a href="{% url 'informacoes_pescaria' %}" class="btn btn-outline-warning">Vizualizar pescarias</a>
-    <a href="{% url 'rankings' %}" class="btn btn-outline-danger">Rankings</a>
+    <div class="row">
+        <div class="col-4 shadow p-3 mb-5 rounded"
+             style="background: #B0E0E6; margin-top: 3rem; margin-left: 3rem;">
+            <h3>Pescas agendadas</h3>
+            <p>
+                Aqui você poderá visualizar todas as pescas agendadas,
+                além de poder agendar uma nova pesca para você e seus amigos.
+                <br><br>
+                Chame seus amigos, agendem pescas, concorram em nossos rankings
+                e o mais importante, DIVIRTAM-SE!
+            </p>
+            <a href="{% url 'informacoes_pescaria' %}"
+               class="btn btn-secondary">
+                Vizualizar pescarias
+            </a>
+        </div>
+        <div class="col-2"></div>
+        <div class="col-4 shadow p-3 mb-5 rounded"
+             style="background: #B0E0E6; margin-top: 3rem; margin-left: 3rem;">
+            <h3>Rank por massa</h3>
+                <p>
+                    Aqui você poderá visualizar os concorrentes e suas posições,
+                    além de poder entrar na competição.
+                    <br><br>
+                    Vamos lá, inscreva sua pesca e concorra em nossos rankings
+                    junto com os seus amigos pescadores!
+                </p>
+            <a href="{% url 'rankings' %}"
+               class="btn btn-secondary">
+                Rankings
+            </a>
+        </div>
+    </div>
+
+
+
 {% endblock %}

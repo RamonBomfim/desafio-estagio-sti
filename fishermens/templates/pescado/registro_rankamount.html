@@ -3,12 +3,21 @@
 {% load bootstrap %}
 {% load static %}
 {% block main %}
-    <h2>Competidor,</h2>
-    <span>Cadastre as informações pedidas para concorrer ao rank.</span>
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form|bootstrap }}
-        <button type="submit" class="btn btn-success">Salvar</button>
-        <a href="{% url 'rankings' %}" class="btn btn-light">Voltar</a>
-    </form>
+    <div class="row">
+        <div class="col">
+            <form method="POST" enctype="multipart/form-data">
+                <fieldset>
+                    <legend>Competidor,<span>cadastre as informações pedidas para concorrer ao rank.</span></legend>
+                    {% csrf_token %}
+                    <div class="input-block">
+                        {{ form|bootstrap }}
+                    </div>
+                    <div class="row buttons">
+                        <a href="{% url 'rankings' %}" class="btn btn-light">Voltar</a>
+                        <button type="submit" class="btn btn-success">Salvar</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
 {% endblock %}

@@ -2,14 +2,37 @@
 {% block title %}Amigo Pescador{% endblock %}
 {% load static %}
 {% block main %}
-    <h1 class="display-4">Seja bem-vindo ao Amigo Pescador</h1>
-        <p class="lead">
-            Para quem gosta de pescar com seus amigos e competir contra eles ao mesmo tempo!
-        </p>
+    <div class="row">
+        <div class="col">
+            <img src="{% static 'images/amigo_pescador.png' %}" alt="Logo" style="height: 120px; margin-left: 20px;">
+        </div>
+        <div class="col-4 index">
+            <p style="margin-top: 1rem; font-weight: 400;" >
+                Faça seu login para ter acesso a todos os conteúdos!
+            </p>
+        </div>
+        <div class="col-3" style="margin-top: 22px; font-weight: 400;">
+            <a href="{% url 'login' %}" class="btn btn-light">Entrar</a>
+            ou
+            <a href="{% url 'registro' %}" class="btn btn-info">Registrar-se</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-10">
+            <h1 class="display-3" style="font-weight: 800;">Seja bem-vindo ao Amigo Pescador</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p class="lead" style="margin-top: 1rem; font-size: 1.5rem; font-weight: 400;">
+                Para quem gosta de pescar com seus amigos e competir contra eles ao mesmo tempo!
+            </p>
+            <hr class="my-4">
+        </div>
+    </div>
+    </div>
 
-    <hr class="my-4">
-        <p>Faça seu login para ter acesso a todos os conteúdos!</p>
-        <a href="{% url 'login' %}" class="btn btn-light">Entrar</a>
-        ou
-        <a href="{% url 'registro' %}" class="btn btn-info">Registrar-se</a>
+
+
+
 {% endblock %}

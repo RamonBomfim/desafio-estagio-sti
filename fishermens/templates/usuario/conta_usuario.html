@@ -2,45 +2,65 @@
 {% block title %}Amigo Pescador{% endblock %}
 {% load static %}
 {% block main %}
-    <a href="{% url 'home' %}" class="btn btn-light">
-        <svg width="1em" height="1em" viewBox="0 0 16 16"
-             class="bi bi-house-fill" fill="currentColor"
-             xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd"
-                  d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2
-                  13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
-            <path fill-rule="evenodd"
-                  d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8
-                  2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
-        </svg>
-    </a>
+    <div class="row">
+        <div class="col">
+            <img src="{% static 'images/amigo_pescador.png' %}" alt="Logo" style="height: 120px; margin-left: 20px;">
+        </div>
+        <div class="col"></div>
+        <div class="col" style="margin-top: 22px; font-weight: 400;">
+            <a href="{% url 'home' %}" class="btn btn-light">
+                <svg width="1em" height="1em" viewBox="0 0 16 16"
+                     class="bi bi-house-fill" fill="currentColor"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                          d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2
+                          13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+                    <path fill-rule="evenodd"
+                          d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8
+                          2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+                </svg>
+            </a>
+            {% if user.is_authenticated %}
+                <span style="margin: 3px 1px 3px 3px;">Olá, {{ user.name | capfirst }}</span>
+                <a href="{% url 'logout' %}" class="badge badge-pill badge-dark"
+                   style="margin: 3px 3px;">
+                    Sair
+                </a>
+            {% endif %}
+        </div>
+    </div>
 
-    {% if user.is_authenticated %}
-        Olá, {{ user.name | capfirst }}
-        <a href="{% url 'logout' %}" class="btn btn-outline-dark">Sair</a>
-    {% endif %}
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col" class="col-4 shadow p-3 mb-5 rounded"
+             style="background: #B0E0E6; margin-top: 2rem; margin-right: 1rem; border-radius: .8rem">
 
-    <h3>Minha conta</h3>
+            <h3>Minha conta</h3>
 
-    <ul>
-        <li>Nome: {{ user.name }}</li>
-        <li>CPF: {{ user.cpf }}</li>
-        <li>Telefone: {{ user.phone }}</li>
-        <li>Endereço: {{ user.address }}</li>
-        <li>Complemento: {{ user.complement }}</li>
-        {% if user.image %}
-            <img src="{{user.image.url}}" alt="Imagem de Perfil" style="height: 200px">
-        {% endif %}
-    </ul>
+            <ul>
+                <li>Nome: {{ user.name }}</li>
+                <li>CPF: {{ user.cpf }}</li>
+                <li>Telefone: {{ user.phone }}</li>
+                <li>Endereço: {{ user.address }}</li>
+                <li>Complemento: {{ user.complement }}</li>
 
-    <a href="{% url 'atualiza_dados_usuario' %}" class="btn btn-outline-primary">Atualizar dados</a>
-    <a href="{% url 'deletar_conta' %}" class="btn btn-danger">
-        <svg width="1em" height="1em" viewBox="0 0 16 16"
-             class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2
-            2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1
-            1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5
-            0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
-        </svg>
-    </a>
+            </ul>
+
+            <a href="{% url 'atualiza_dados_usuario' %}" class="btn btn-outline-primary">Atualizar dados</a>
+            <a href="{% url 'deletar_conta' %}" class="btn btn-danger">
+                <svg width="1em" height="1em" viewBox="0 0 16 16"
+                     class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2
+                    2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1
+                    1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5
+                    0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+                </svg>
+            </a>
+        </div>
+        <div class="col-3">
+            {% if user.image %}
+                <img src="{{user.image.url}}" alt="Imagem de Perfil" style="height: 200px; border-radius: 100%">
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}

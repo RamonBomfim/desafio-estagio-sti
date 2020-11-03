@@ -2,13 +2,21 @@
 {% block title %}Amigo Pescador{% endblock %}
 {% load static %}
 {% block main %}
-    <h1>
-        Tem certeza que deseja deletar o peixe {{ fisherman.fish_species }} com
-        {{ fisherman.fish_weight }}kg de {{ fisherman.fisherman }}?
-    </h1>
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-success">Confirmar</button>
-        <a href="{% url 'rankings' %}" class="btn btn-outline-danger">Cancelar</a>
-    </form>
+    <div class="row">
+        <div class="col">
+            <h1>
+                Tem certeza que deseja deletar o peixe {{ fisherman.fish_species }} com
+                {{ fisherman.fish_weight }}kg de {{ fisherman.fisherman }}?
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <a href="{% url 'rankings' %}" class="btn btn-outline-danger">Cancelar</a>
+                <button type="submit" class="btn btn-success">Confirmar</button>
+            </form>
+        </div>
+    </div>
 {% endblock %}

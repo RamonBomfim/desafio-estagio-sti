@@ -3,11 +3,21 @@
 {% load bootstrap %}
 {% load static %}
 {% block main %}
-    <form method="POST" enctype="multipart/form-data">
-        <legend>Atualizar Dados</legend>
-        {% csrf_token %}
-        {{ form|bootstrap }}
-        <button type="submit" class="btn btn-success">Salvar</button>
-        <a href="{% url 'conta' %}" class="btn btn-light">Voltar</a>
-    </form>
+    <div class="row">
+        <div class="col">
+            <form method="POST" enctype="multipart/form-data">
+                <fieldset>
+                    <legend>Atualizar Dados</legend>
+                    {% csrf_token %}
+                    <div class="input-block">
+                        {{ form|bootstrap }}
+                    </div>
+                    <div class="row buttons">
+                        <a href="{% url 'conta' %}" class="btn btn-light">Voltar</a>
+                        <button type="submit" class="btn btn-success">Salvar</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
 {% endblock %}
