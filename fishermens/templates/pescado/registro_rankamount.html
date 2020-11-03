@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Amigo Pescador{% endblock %}
+{% load bootstrap %}
+{% load static %}
+{% block main %}
+    <h2>Competidor,</h2>
+    <span>Cadastre as informações pedidas para concorrer ao rank.</span>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|bootstrap }}
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <a href="{% url 'rankings' %}" class="btn btn-light">Voltar</a>
+    </form>
+{% endblock %}

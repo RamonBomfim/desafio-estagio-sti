@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Amigo Pescador{% endblock %}
+{% load static %}
+{% block main %}
+    <h1 class="display-4">Seja bem-vindo ao Amigo Pescador</h1>
+        <p class="lead">
+            Para quem gosta de pescar com seus amigos e competir contra eles ao mesmo tempo!
+        </p>
+
+    <hr class="my-4">
+        <p>Faça seu login para ter acesso a todos os conteúdos!</p>
+        <a href="{% url 'login' %}" class="btn btn-light">Entrar</a>
+        ou
+        <a href="{% url 'registro' %}" class="btn btn-info">Registrar-se</a>
+{% endblock %}

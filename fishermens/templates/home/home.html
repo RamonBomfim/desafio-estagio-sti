@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Amigo Pescador{% endblock %}
+{% load static %}
+{% block main %}
+    {% if user.is_authenticated %}
+        Olá, <a href="{% url 'conta' %}">{{ user.name | capfirst }}</a>
+        <a href="{% url 'logout' %}" class="badge badge-pill badge-dark">Sair</a>
+    {% endif %}
+
+    <a href="{% url 'informacoes_pescaria' %}" class="btn btn-outline-warning">Vizualizar pescarias</a>
+    <a href="{% url 'rankings' %}" class="btn btn-outline-danger">Rankings</a>
+{% endblock %}

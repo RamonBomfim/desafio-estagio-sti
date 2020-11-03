@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}Amigo Pescador{% endblock %}
+{% load static %}
+{% block main %}
+    <a href="{% url 'home' %}" class="btn btn-light">
+        <svg width="1em" height="1em" viewBox="0 0 16 16"
+             class="bi bi-house-fill" fill="currentColor"
+             xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+                  d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2
+                  13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+            <path fill-rule="evenodd"
+                  d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8
+                  2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+        </svg>
+    </a>
+
+    <ul>
+        <h3>Rank por Peso</h3>
+        {% for fish in rank_weight %}
+            <li>
+                {{ fish.fisherman }} - {{ fish.fish_weight }} - {{ fish.fish_species }}
+                <a href="{% url 'atualiza_rankweight' fish.id %}" class="btn btn-outline-primary">Atualizar</a>
+
+                <a href="{% url 'deleta_competidor_peso' fish.id %}" class="btn btn-danger">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16"
+                         class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2
+                        2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1
+                        1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5
+                        0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+                    </svg>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'registro_rankweight' %}" class="btn btn-outline-info">Concorrer no rank por peso</a>
+
+    <ul>
+        <h3>Rank por Quantidade</h3>
+        {% for fish in rank_amount %}
+            <li>
+                {{ fish.fisherman }} - {{ fish.fish_amount }} - {{ fish.fish_species }}
+                <a href="{% url 'atualiza_rankamount' fish.id %}" class="btn btn-outline-primary">Atualizar</a>
+
+                <a href="{% url 'deleta_competidor_quantidade' fish.id %}" class="btn btn-danger">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16"
+                         class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2
+                        2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1
+                        1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5
+                        0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+                    </svg>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'registro_rankamount' %}" class="btn btn-outline-info">Concorrer no rank por quantidade</a>
+{% endblock %}
+
