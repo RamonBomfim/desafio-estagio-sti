@@ -9,7 +9,7 @@
 ### Criando seu ambiente virtual:
 #### O python e o virtualenv já deve estar instalado. 
 
-    cd kolego_portal
+    cd fisherman_friend
     python -m venv venv
     cd venv/scripts
     activate
@@ -31,7 +31,7 @@
     obs: no settings.py do seu projeto, altere todos os dados,
     de acordo com a sua máquina. 
 
-### Instalando os modulos e dependencias do projeto KOLEGO
+### Instalando os modulos e dependencias do projeto FishermanFriend
 ##### Estando no terminal vá para o diretório raiz do seu
 ##### projeto e digite: 
     
